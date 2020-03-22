@@ -8,12 +8,16 @@ endif
 " Configuration for the plugin manager
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 " Gruvbox theme plugin 
+set background=dark
+let g:gruvbox_transparent_bg=1
 colorscheme gruvbox
 
 " Start Nerdtree only when no filename specified
@@ -32,7 +36,17 @@ set expandtab
 set number 
 set cursorline
 set showmatch
-set hlsearch
 set noerrorbells
 set relativenumber
 set rnu
+
+set hlsearch
+set smartcase
+set ignorecase
+set incsearch
+
+set ruler
+ 
+set undolevels=1000
+set backspace=indent,eol,start
+

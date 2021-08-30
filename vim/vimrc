@@ -8,12 +8,19 @@ endif
 " Configuration for the plugin manager
 call plug#begin('~/.vim/plugged')
 
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'davidhalter/jedi-vim'
+Plug 'nvie/vim-flake8'
+Plug 'lervag/vimtex'
 
 call plug#end()
+
+" Python Jedi
+""let g:jedi#use_splits_not_buffers = "left"
 
 " Gruvbox theme plugin 
 set background=dark
@@ -23,6 +30,11 @@ colorscheme gruvbox
 " Start Nerdtree only when no filename specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
+
+" vim-pydocstring change docstring type to numpy
+let g:pydocstring_doq_path = '/home/skr/.local/bin/doq'
+let g:pydocstring_formatter = 'numpy'
 
 " Vim integrated configuration
 syntax on
@@ -37,16 +49,39 @@ set number
 set cursorline
 set showmatch
 set noerrorbells
-set relativenumber
-set rnu
 
 set hlsearch
 set smartcase
 set ignorecase
 set incsearch
-
+set rnu
 set ruler
- 
+set scrolloff=3 
 set undolevels=1000
 set backspace=indent,eol,start
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+inoremap <expr> ) getline('.')[getpos('.')[2] - 1] == ')' ? '<Right>' : ')'
+inoremap <expr> ] getline('.')[getpos('.')[2] - 1] == ']' ? '<Right>' : ']'
+inoremap <expr> } getline('.')[getpos('.')[2] - 1] == '}' ? '<Right>' : '}'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>

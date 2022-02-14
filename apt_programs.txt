@@ -1,2 +1,5 @@
 fzf
 nitrogen
+tldr
+compton
+

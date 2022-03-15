@@ -23,6 +23,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'haystackandroid/cosmic_latte'
 
 call plug#end()
 
@@ -32,10 +33,17 @@ let g:coc_disable_startup_warning = 1
 " fzf.vim
 noremap <C-p> :Files<Cr>
 
-" Gruvbox theme plugin 
+" Theme section 
 set background=dark
-let g:gruvbox_transparent_bg=1
-colorscheme gruvbox
+set termguicolors
+
+" Cosmic Latte
+colorscheme cosmic_latte
+let g:airline_theme='cosmic_latte_dark'
+
+" Gruvbox
+" let g:gruvbox_transparent_bg=1
+" colorscheme gruvbox
 
 " Start Nerdtree only when no filename specified
 autocmd StdinReadPre * let s:std_in=1

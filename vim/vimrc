@@ -73,6 +73,7 @@ au BufNewFile, BufRead *.py
 " Highlight bad whitespaces
 au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
+" Have vim run in virtual env when available
 python3 << EOF
 import os
 import subprocess
@@ -149,3 +150,6 @@ nnoremap <C-l> <C-w>l
 
 " Transparent Background
 hi Normal guibg=NONE ctermbg=NONE
+
+" Magic for forgetting to edit sensitive files with sudo
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

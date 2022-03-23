@@ -112,11 +112,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Go related path import
-export PATH=$PATH:/usr/local/go/bin
+# pywal (picture to colorscheme)
+setsid /home/skr/.local/bin/wal -s -t -i /home/skr/Pictures/simon-berger-twukN12EN7c-unsplash.jpg
+setsid /home/skr/.local/bin/wal -n --saturate 0.3 -i /home/skr/Pictures/störmi_cropped_2.png
+clear
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export PATH=~/minecraft/minecraft-launcher/:$PATH
+set -o vi
+
+/usr/bin/setxkbmap -option "ctrl:nocaps"
 
 # Set color of the terminal according to cosmic latte vim theme
-[ -n "$PS1" ] && sh ~/.vim/plugged/cosmic_latte/shell/cosmic_latte_dark.sh
-
-# Start compton for transparency
-compton -cCGfF -b -i 0.75 --vsync opengl
+#[ -n "$PS1" ] && sh ~/.vim/plugged/cosmic_latte/shell/cosmic_latte_dark.sh

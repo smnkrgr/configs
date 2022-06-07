@@ -180,3 +180,6 @@ endfunction
 let breakpoint = "import pdb; pdb.set_trace()"
 nnoremap <C-b> :call InsertStringAbove(breakpoint)<CR>
 nnoremap <C-n> :call RemoveAllLinesWithStringInBuffer(breakpoint)<CR>
+
+" Set syntax highlighting for Splunk conf files
+autocmd BufRead,BufNewFile *.conf setf dosini

@@ -126,3 +126,6 @@ set -o vi
 
 # Set color of the terminal according to cosmic latte vim theme
 #[ -n "$PS1" ] && sh ~/.vim/plugged/cosmic_latte/shell/cosmic_latte_dark.sh
+compton -cCGfF -b -i 0.75 --vsync opengl
+eval "$(starship init bash)"
+set -o vi

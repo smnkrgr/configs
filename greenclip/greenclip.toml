@@ -1,0 +1,7 @@
+max_history_length = 50
+history_path = "~/.cache/greenclip.history"
+image_cache_path = "~/.cache/greenclip/"
+use_primary_selection = true
+trim_space_from_selection = true
+rofi_args = ["-modi", "run,drun,window,clipboard:greenclip print", "-show", "clipboard"]
+

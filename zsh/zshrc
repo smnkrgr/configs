@@ -262,3 +262,5 @@ export PATH="$PATH:/home/skr/.local/bin"
 
 alias vim='nvim'
 alias obsidian='flatpak run md.obsidian.Obsidian'
+
+set -o vi
